@@ -1,0 +1,11 @@
+.home-section {
+    width: 400px;
+    border: 1px solid black;
+    padding: 1rem .5rem;
+    margin-top: .5rem;
+    box-shadow: 5px 5px 10px black;
+}
+
+.home-section + .home-section {
+    margin-left: 1rem;
+}
