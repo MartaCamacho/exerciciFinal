@@ -1,7 +1,15 @@
 import UsersComponent from '../components/UsersComponent.vue';
+import { mapState } from 'vuex';
+
 export default {
-  name: 'Users',
   components: {
     UsersComponent
-  }
+  },
+  mounted () {
+    this.$store.dispatch('loadUsers')
+  },
+  computed: mapState([
+    'users'
+  ])
+  
 };

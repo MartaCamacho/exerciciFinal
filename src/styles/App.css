@@ -1,6 +1,7 @@
 body{
-  height: 100vh;
+  min-height: 100vh;
   position: relative;
+  padding-bottom: 8rem;
 }
 
 #app {

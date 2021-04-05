@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div id="nav">
-      <b-navbar toggleable="lg" type="dark" variant="info">
+      <b-navbar toggleable="lg" type="dark" align="center"  variant="info">
         <b-navbar-brand><router-link to="/">🖤</router-link></b-navbar-brand>
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
         <b-collapse id="nav-collapse" is-nav>
@@ -13,6 +13,7 @@
         </b-collapse>
       </b-navbar>
     </div>
+    <button class="mt-2 btn-dark" v-if="$route.path !== '/'" @click="back">Tornar</button>
     <router-view />
       <footer class="footer-container">
         <p>Made with 🖤 by Marta Camacho</p>
@@ -20,6 +21,8 @@
       </footer>
   </div>
 </template>
+
+<script src="./scripts/App.js"></script>
 
 <style>
 @import url('./styles/App.css');
