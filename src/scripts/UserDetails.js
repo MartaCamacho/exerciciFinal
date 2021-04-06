@@ -11,6 +11,7 @@ export default {
     let vue = this;
     let TheId = vue.id;
     this.$store.dispatch('loadCurrentUser', TheId);
+    this.$store.dispatch('addCurrentUserToSeen', TheId);
   },
   computed: mapState([
     'currentUser'

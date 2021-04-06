@@ -28,7 +28,7 @@ export default new Vuex.Store({
       state.currentUser = currentUser;
     },
     setConsultedUsers(state, consultedUsers) {
-      state.consultedUsers = consultedUsers;
+      state.consultedUsers = [...state.consultedUsers, parseInt(consultedUsers)];
     },
     setPhotos(state, photos) {
       state.photos = photos;

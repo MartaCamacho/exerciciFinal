@@ -1,7 +1,16 @@
 <template>
   <div class="home d-flex justify-content-center">
-    <section class="home-section">Users consulted</section>
-    <section class="home-section">Pictures Consulted</section>
+    <section class="home-section">
+      <h5>Users consulted</h5>
+      <div>
+        <p v-for="(user, index) in userCoincidenceName">
+          {{user.name}} {{user.count}}
+        </p>
+      </div>
+      </section>
+    <section class="home-section">
+      <h5>Pictures consulted</h5> 
+      </section>
   </div>
 </template>
 
