@@ -11,5 +11,4 @@ export default {
   computed: mapState([
     'users'
   ])
-  
 };

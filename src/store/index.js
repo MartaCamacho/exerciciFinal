@@ -6,7 +6,11 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     users: [],
+    currentUser: [],
+    consultedUsers: [],
     photos: [],
+    currentPhoto: [],
+    consultedPhotos: [],
   },
   getters: {
     users: state => {
@@ -14,14 +18,23 @@ export default new Vuex.Store({
     },
     photos: state => {
       return state.photos;
-    },
+    }
   },
   mutations: {
     setUsers(state, users) {
       state.users = users;
     },
+    setCurrentUser(state, currentUser) {
+      state.currentUser = currentUser;
+    },
+    setConsultedUsers(state, consultedUsers) {
+      state.consultedUsers = consultedUsers;
+    },
     setPhotos(state, photos) {
       state.photos = photos;
+    },
+    setCurrentPhoto(state, photo) {
+      state.currentPhoto = photo;
     }
   },
   actions: {
@@ -30,9 +43,21 @@ export default new Vuex.Store({
           .get('http://jsonplaceholder.typicode.com/users')
           .then(response => response.data)
           .then(users => {
-              console.log(users);
           commit('setUsers', users)
       })
+    },
+    loadCurrentUser ({ commit }, userId) {
+      axios
+          .get('http://jsonplaceholder.typicode.com/users')
+          .then(response => response.data)
+          .then(users => users.map(user => {
+            if (user.id === userId){
+              return commit('setCurrentUser', user)
+            }
+          }))
+    },
+    addCurrentUserToSeen ({ commit }, user) {
+              return commit('setConsultedUsers', user)
     },
     loadPhotos ({ commit }) {
       axios
