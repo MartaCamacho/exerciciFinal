@@ -8,16 +8,16 @@ export default new Vuex.Store({
     users: [],
     currentUser: [],
     consultedUsers: [],
-    photos: [],
-    currentPhoto: [],
-    consultedPhotos: [],
+    pictures: [],
+    currentPictures: [],
+    consultedPictures: [],
   },
   getters: {
     users: state => {
       return state.users;
     },
-    photos: state => {
-      return state.photos;
+    pictures: state => {
+      return state.pictures;
     }
   },
   mutations: {
@@ -30,11 +30,11 @@ export default new Vuex.Store({
     setConsultedUsers(state, consultedUsers) {
       state.consultedUsers = [...state.consultedUsers, parseInt(consultedUsers)];
     },
-    setPhotos(state, photos) {
-      state.photos = photos;
+    setPictures(state, pictures) {
+      state.pictures = pictures;
     },
-    setCurrentPhoto(state, photo) {
-      state.currentPhoto = photo;
+    setCurrentPicture(state, picture) {
+      state.currentPictures = pictures;
     }
   },
   actions: {
@@ -44,6 +44,14 @@ export default new Vuex.Store({
           .then(response => response.data)
           .then(users => {
           commit('setUsers', users)
+      })
+    },
+    loadPictures ({ commit }) {
+      axios
+          .get('http://jsonplaceholder.typicode.com/photos')
+          .then(response => response.data)
+          .then(pictures => {
+          commit('setPictures', pictures)
       })
     },
     loadCurrentUser ({ commit }, userId) {
@@ -56,18 +64,22 @@ export default new Vuex.Store({
             }
           }))
     },
+    loadCurrentPicture ({ commit }, pictureId) {
+      axios
+          .get('http://jsonplaceholder.typicode.com/users')
+          .then(response => response.data)
+          .then(pictures => pictures.map(picture => {
+            if (picture.id === pictureId){
+              return commit('setCurrentPicture', picture)
+            }
+          }))
+    },
     addCurrentUserToSeen ({ commit }, user) {
               return commit('setConsultedUsers', user)
     },
-    loadPhotos ({ commit }) {
-      axios
-          .get('http://jsonplaceholder.typicode.com/photos')
-          .then(response => response.data)
-          .then(photos => {
-              console.log(photos);
-          commit('setPhotos', photos)
-      })
-    },
+    addCurrentPictureToSeen ({ commit }, picture) {
+      return commit('setConsultedPictures', picture)
+    }
   },
   modules: {
   }

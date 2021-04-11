@@ -6,7 +6,6 @@ export default {
     return {
       userCoincidenceName: [],
     }
-    
   },
   computed: mapState([
     'consultedUsers',
@@ -15,25 +14,19 @@ export default {
   mounted(){
     const vue = this;
     let consulted = vue.consultedUsers;
-    let counts = [];
-    
-    let theUsers = vue.users.map(user => 
-      {
+    let theUsers = vue.users.map(user => {
         if (consulted.includes(user.id) == true){
-          let result = consulted.filter(o1 => vue.users.some(o2 => o1 === o2.id))
-          result.forEach(function(x) { counts[x] = (counts[x] || 0)+1; });
-          let id = counts.map(count => 
-            {return vue.userCoincidenceName = [...vue.userCoincidenceName, {name: user.name, count: count}]
-            })
-          console.log(id)
-        
+          function getOccurrence(array, value) {
+            return array.filter((v) => (v === value)).length;
+          }
+          vue.userCoincidenceName = [...vue.userCoincidenceName, {
+            name: user.name,
+            count: getOccurrence(consulted, user.id)
+            }]
         } else {
           return
         }
-      
       })
-      console.log(vue.userCoincidenceName)
       return theUsers
   }
-  
 };
