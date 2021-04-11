@@ -10,6 +10,11 @@
       </section>
     <section class="home-section">
       <h5>Pictures consulted</h5> 
+       <div>
+        <p v-for="(picture, index) in pictureCoincidenceName">
+          {{picture.name}} {{picture.count}}
+        </p>
+      </div>
       </section>
   </div>
 </template>

@@ -3,7 +3,7 @@
     <h1>Pictures</h1>
     <div class="user-card-container" >
       <b-card-group v-for="(picture,index) in pictures" :key="index">
-        <b-card :header="picture.name" class="text-center user-card" bg-variant="dark" text-variant="white">
+        <b-card :header="picture.title" class="text-center user-card" bg-variant="dark" text-variant="white">
           <router-link :to="{ name: 'PictureDetails', params: {id: picture.id, picture: picture} }">
           <b-card-text><button class="btn btn-light">Veure Imatge</button></b-card-text>
           </router-link>
@@ -14,4 +14,4 @@
 </template>
 
 <script src='../scripts/PicturesComponent.js'></script>
-<style>@import url('../styles/UsersComponent.css')</style> /* cambiar esto */
+<style>@import url('../styles/PicturesComponent.css')</style> /* cambiar esto */

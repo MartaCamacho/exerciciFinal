@@ -14,6 +14,7 @@ export default {
     this.$store.dispatch('addCurrentPictureToSeen', TheId);
   },
   computed: mapState([
-    'currentPicture'
+    'currentPicture',
+    'consultedPictures'
   ])
 };

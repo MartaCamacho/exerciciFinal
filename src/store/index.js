@@ -9,7 +9,7 @@ export default new Vuex.Store({
     currentUser: [],
     consultedUsers: [],
     pictures: [],
-    currentPictures: [],
+    currentPicture: [],
     consultedPictures: [],
   },
   getters: {
@@ -33,9 +33,12 @@ export default new Vuex.Store({
     setPictures(state, pictures) {
       state.pictures = pictures;
     },
-    setCurrentPicture(state, picture) {
-      state.currentPictures = pictures;
-    }
+    setCurrentPicture(state, currentPicture) {
+      state.currentPicture = currentPicture;
+    },
+    setConsultedPictures(state, consultedPictures) {
+      state.consultedPictures = [...state.consultedPictures, parseInt(consultedPictures)];
+    },
   },
   actions: {
     loadUsers ({ commit }) {
@@ -66,7 +69,7 @@ export default new Vuex.Store({
     },
     loadCurrentPicture ({ commit }, pictureId) {
       axios
-          .get('http://jsonplaceholder.typicode.com/users')
+          .get('http://jsonplaceholder.typicode.com/photos')
           .then(response => response.data)
           .then(pictures => pictures.map(picture => {
             if (picture.id === pictureId){
