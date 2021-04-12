@@ -4,7 +4,7 @@
       <h5>Users consulted</h5>
       <div>
         <p v-for="(user, index) in userCoincidenceName">
-          {{user.name}} {{user.count}}
+          <span class="d-flex justify-content-between mr-2 ml-2" :key="index"><span>{{user.name}}</span> <span>{{user.count}}</span></span>
         </p>
       </div>
       </section>
@@ -12,7 +12,7 @@
       <h5>Pictures consulted</h5> 
        <div>
         <p v-for="(picture, index) in pictureCoincidenceName">
-          {{picture.name}} {{picture.count}}
+          <span class="d-flex justify-content-between mr-2 ml-2" :key="index"><span>{{picture.name}}</span> <span>{{picture.count}}</span></span>
         </p>
       </div>
       </section>
