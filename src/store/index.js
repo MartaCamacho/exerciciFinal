@@ -8,9 +8,13 @@ export default new Vuex.Store({
     users: [],
     currentUser: [],
     consultedUsers: [],
+    filteredUsers: [],
     pictures: [],
     currentPicture: [],
     consultedPictures: [],
+    filters: {
+      search: '',
+    }
   },
   getters: {
     users: state => {
@@ -18,7 +22,10 @@ export default new Vuex.Store({
     },
     pictures: state => {
       return state.pictures;
-    }
+    },
+    filters: state => {
+      return state.filters;
+    },
   },
   mutations: {
     setUsers(state, users) {
@@ -38,6 +45,10 @@ export default new Vuex.Store({
     },
     setConsultedPictures(state, consultedPictures) {
       state.consultedPictures = [...state.consultedPictures, parseInt(consultedPictures)];
+    },
+    SetSearch(state, search) {
+      console.log(state.filters.search)
+      state.filters.search = search;
     },
   },
   actions: {
@@ -78,7 +89,7 @@ export default new Vuex.Store({
           }))
     },
     addCurrentUserToSeen ({ commit }, user) {
-              return commit('setConsultedUsers', user)
+      return commit('setConsultedUsers', user)
     },
     addCurrentPictureToSeen ({ commit }, picture) {
       return commit('setConsultedPictures', picture)

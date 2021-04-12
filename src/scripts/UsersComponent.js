@@ -1,8 +1,9 @@
 
 export default {
+  name: 'UsersComponent',
   props: { 
     users: {
-        type: Array, 
+        type: [Array, String], 
         required: true
     }
   },
@@ -11,9 +12,5 @@ export default {
       if(!value) return "";
       return value.toString().toUpperCase();
     },
-    ArrayCon(value) {
-      if(!value) return "";
-      return value.toString().split();
-    }
   }
 };

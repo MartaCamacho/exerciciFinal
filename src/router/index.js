@@ -33,7 +33,12 @@ const routes = [
     name: 'PictureDetails',
     component: PictureDetails,
     props: true
-  }
+  },
+  {
+    path: '/users-found',
+    name: 'UserNotFound',
+    component: () => import(/* webpackChunkName: "UserNotFound" */ '../views/UserNotFound.vue'),
+  },
 ]
 
 const router = new VueRouter({
