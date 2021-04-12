@@ -14,7 +14,12 @@
       </b-navbar>
     </div>
     <button class="mt-2 btn-dark" v-if="$route.path !== '/'" @click="back">Tornar</button>
-    <router-view />
+    <transition
+        name="fade"
+        mode="out-in"
+      >
+      <router-view />
+      </transition>
       <footer class="footer-container">
         <p>Made with 🖤 by Marta Camacho</p>
         <p>Copyright © 2021</p>
