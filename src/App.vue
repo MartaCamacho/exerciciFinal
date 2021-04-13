@@ -14,7 +14,10 @@
         
          <b-nav-form right>
           <b-form-input size="sm" class="mr-sm-2" value="search" placeholder="Nom d'usuari" v-model="SearchForm"></b-form-input>
-          <b-button @click="redirectToFilter"  size="sm" class="my-2 my-sm-0" type="submit">Search</b-button>
+          <router-link :to="{ name: 'UserNotFound'}">
+            <b-button size="sm" class="my-2 my-sm-0" type="submit">Search</b-button>
+          </router-link>
+          
         </b-nav-form>
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
       </b-navbar>

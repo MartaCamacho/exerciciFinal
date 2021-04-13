@@ -5,7 +5,7 @@ import { mapState } from 'vuex';
 export default {
     name: 'UserNotFound',
     components: {
-        UsersComponent
+      'UsersComponent': UsersComponent
       },
     data() {
         return {
@@ -19,7 +19,6 @@ export default {
     }, 
     mounted () {
         this.$store.dispatch('loadUsers')
-        console.log(this.filters.search)
         let users = this.users;
         let usersRefresh = [];
         console.log(this.filters.search)

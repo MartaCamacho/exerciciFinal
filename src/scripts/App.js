@@ -5,11 +5,6 @@ export default {
       back(){
         this.$router.go(-1)
       },
-      redirectToFilter(){
-        if(this.$router.currentRoute.path != '/users-found'){
-          this.$router.push({name: "UserNotFound"})
-        }
-      }
     }, 
     computed: {
       SearchForm: {

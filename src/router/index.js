@@ -35,7 +35,7 @@ const routes = [
     props: true
   },
   {
-    path: '/users-found',
+    path: '/found',
     name: 'UserNotFound',
     component: () => import(/* webpackChunkName: "UserNotFound" */ '../views/UserNotFound.vue'),
   },
